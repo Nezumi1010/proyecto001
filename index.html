@@ -1,11 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Hola</h1>
-  </body>
+<html lang="es">
+<head>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Islas Galápagos - Turismo</title>
+
+  <!-- Estilos CSS internos para diseño y presentación -->
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+    }
+    /* Estilo base para todo el body */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f8ff; 
+      color: #333; 
+      line-height: 1.6; /* Espaciado entre líneas para mejor legibilidad */
+    }
+    /* Estilos para el encabezado principal */
+    header {
+      background: #004d40; 
+      color: white; 
+      padding: 20px 0;
+      text-align: center; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Sombra sutil debajo */
+    }
+    /* Estilo del título dentro del header */
+    header h1 {
+      font-size: 2.5rem; 
+      letter-spacing: 2px; /* Espacio entre letras */
+    }
+    /* Contenedor principal para el contenido con margen y padding */
+    main {
+      max-width: 1100px; 
+      margin: 30px auto; 
+      padding: 0 20px; 
+    }
+    /* Sección individual dentro del main */
+    section {
+      margin-bottom: 40px; 
+    }
+    /* Títulos de sección */
+    h2 {
+      color: #00796b; 
+      margin-bottom: 15px;
+      border-bottom: 3px solid #00796b; /* Línea decorativa debajo */
+      padding-bottom: 5px;
+    }
+    /* Contenedor de tarjetas con diseño flexible */
+    .cards {
+      display: flex;
+      flex-wrap: wrap; /* Permite que las tarjetas bajen a otra línea */
+      gap: 20px; /* Espacio entre tarjetas */
+      justify-content: center; /* Centra las tarjetas horizontalmente */
+    }
+    /* Tarjeta individual */
+    .card {
+      background: white;
+      border-radius: 8px; /* Bordes redondeados */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+      width: 300px; 
+      overflow: hidden; /* Recorta contenido que sobresalga */
+      transition: transform 0.3s ease; /* Animación suave al pasar el mouse */
+    }
+    /* Efecto hover para dar sensación de levantar la tarjeta */
+    .card:hover {
+      transform: translateY(-8px); /* Mueve la tarjeta hacia arriba */
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+    }
+    /* Imagen dentro de la tarjeta */
+    .card img {
+      width: 100%; 
+      height: 180px;
+      object-fit: cover; 
+    }
+    /* Contenido textual dentro de la tarjeta */
+    .card-content {
+      padding: 15px;
+    }
+    /* Título de la tarjeta */
+    .card-content h3 {
+      margin-bottom: 10px;
+      color: #004d40; /* Verde oscuro */
+    }
+    /* Párrafo descriptivo de la tarjeta */
+    .card-content p {
+      font-size: 0.95rem;
+      color: #555; /* Gris medio */
+    }
+    /* Estilo para el pie de página */
+    footer {
+      background: #004d40; 
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      margin-top: 50px; /* Separación arriba */
+    }
+    /* Estilos responsivos para pantallas pequeñas */
+    @media(max-width: 768px) {
+      .cards {
+        flex-direction: column; /* Las tarjetas se apilan verticalmente */
+        align-items: center;
+      }
+      .card {
+        width: 90%; 
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Encabezado principal de la página -->
+  <header>
+    <h1>Turismo en las Islas Galápagos</h1>
+  </header>
+
+  <!-- Contenido principal dividido en secciones -->
+  <main>
+    <!-- Sección de lugares turísticos con tarjetas -->
+    <section>
+      <h2>Lugares más turísticos</h2>
+      <div class="cards">
+        <!-- Tarjeta 1 -->
+        <article class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Tortuga_Bay_Santa_Cruz_Island_Galapagos_2015.JPG" alt="Tortuga Bay, Isla Santa Cruz" />
+          <div class="card-content">
+            <h3>Tortuga Bay (Santa Cruz)</h3>
+            <p>Playa de arena blanca donde se pueden ver tortugas marinas y manglares, ideal para caminatas y snorkeling.</p>
+          </div>
+        </article>
+
+        <!-- Tarjeta 2 -->
+        <article class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Loberia_San_Cristobal_Island.jpg" alt="La Lobería, Isla San Cristóbal" />
+          <div class="card-content">
+            <h3>La Lobería (San Cristóbal)</h3>
+            <p>Área protegida famosa por sus colonias de lobos marinos y su ambiente natural único.</p>
+          </div>
+        </article>
+
+        <!-- Tarjeta 3 -->
+        <article class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Isabela_2006_01_09-1.JPG" alt="Los Túneles, Isla Isabela" />
+          <div class="card-content">
+            <h3>Los Túneles (Isabela)</h3>
+            <p>Formaciones volcánicas submarinas para snorkel y buceo, hogar de tortugas, tiburones y peces tropicales.</p>
+          </div>
+        </article>
+
+        <!-- Tarjeta 4 -->
+        <article class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Pinnacle_Rock_Galapagos.jpg" alt="Pinnacle Rock, Isla Bartolomé" />
+          <div class="card-content">
+            <h3>Pinnacle Rock (Bartolomé)</h3>
+            <p>Icono del archipiélago, con senderos para trekking y puntos espectaculares para snorkel.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Sección de reservaciones populares -->
+    <section>
+      <h2>Reservaciones Populares</h2>
+      <p>Los mejores alojamientos y tours para tu experiencia inolvidable:</p>
+      <ul>
+        <li><strong>Finch Bay Galapagos Hotel (Santa Cruz)</strong> – Hotel de lujo con acceso a playa privada.</li>
+        <li><strong>Galápagos Safari Camp (San Cristóbal)</strong> – Campamento de lujo en plena naturaleza.</li>
+        <li><strong>Hostal La Laguna (Isabela)</strong> – Económico y acogedor, cerca del centro.</li>
+        <li><strong>Tour a Isla Bartolomé</strong> – Excursión con snorkel y senderismo en paisajes únicos.</li>
+        <li><strong>Cruceros por el Archipiélago</strong> – Viajes guiados que recorren múltiples islas en varios días.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Pie de página con derechos y créditos -->
+  <footer>
+    <p>© 2025 Turismo Galápagos | Información actualizada y recomendaciones de viaje</p>
+  </footer>
+</body>
 </html>
+
