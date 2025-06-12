@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Turismo en las Islas Galápagos</title>
-  <meta name="description" content="Descubre los mejores lugares turísticos en las Islas Galápagos y reserva tu viaje con nosotros." />
-  <style>
+  <title>Reservaciones de Viajes - Islas Galápagos</title>
+ <style>
     * {
       margin: 0;
       padding: 0;
@@ -56,17 +55,14 @@
       overflow: hidden;
       transition: transform 0.3s ease;
     }
-    .card:hover,
-    .card:focus-within {
+    .card:hover {
       transform: translateY(-8px);
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      outline: none;
     }
     .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
-      display: block;
     }
     .card-content {
       padding: 15px;
@@ -82,82 +78,103 @@
     ul li {
       margin-bottom: 8px;
     }
-    ul li a {
-      color: #00796b;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    ul li a:hover,
-    ul li a:focus {
-      text-decoration: underline;
-      outline: none;
-    }
+
+    /* FORMULARIO MEJORADO */
     form {
       background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      max-width: 500px;
-      margin: 0 auto;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+      max-width: 600px;
+      margin: 0 auto 50px auto;
+      font-size: 1rem;
     }
     form label {
       display: block;
-      margin-top: 10px;
+      margin-top: 15px;
       font-weight: 600;
+      color: #004d40;
     }
     form input, form select, form textarea {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      padding: 12px 15px;
+      margin-top: 6px;
+      border: 1.8px solid #b0c4b1;
+      border-radius: 6px;
       font-size: 1rem;
       transition: border-color 0.3s ease;
     }
     form input:focus, form select:focus, form textarea:focus {
       border-color: #00796b;
       outline: none;
+      box-shadow: 0 0 6px rgba(0,121,107,0.4);
+    }
+    form textarea {
+      resize: vertical;
+      font-family: inherit;
     }
     form button {
-      margin-top: 15px;
+      margin-top: 25px;
       padding: 12px 25px;
       background: #00796b;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 7px;
       cursor: pointer;
       font-size: 1.1rem;
+      font-weight: 600;
       transition: background-color 0.3s ease;
+      width: 100%;
     }
-    form button:hover,
-    form button:focus {
+    form button:hover, form button:focus {
       background: #004d40;
-      outline: none;
     }
+
+    /* Mensajes */
+    #error-message {
+      color: #d32f2f;
+      font-weight: 700;
+      margin-top: 15px;
+      display: none;
+    }
+    #confirmation-message {
+      color: #2e7d32;
+      font-weight: 700;
+      margin-top: 15px;
+      display: none;
+    }
+    #resumenReserva {
+      max-width: 600px;
+      margin: 0 auto 50px auto;
+      background: #e0f2f1;
+      border: 1.5px solid #00796b;
+      border-radius: 8px;
+      padding: 20px 25px;
+      font-size: 1rem;
+      color: #004d40;
+    }
+
     .contact-buttons {
       margin-top: 20px;
       display: flex;
-      justify-content: center;
-      gap: 15px;
+      gap: 10px;
     }
     .contact-buttons a {
       display: inline-block;
-      padding: 12px 20px;
+      padding: 10px 15px;
       background: #25d366;
       color: white;
       text-decoration: none;
       border-radius: 5px;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
     }
     .contact-buttons a.email {
       background: #0072c6;
     }
-    .contact-buttons a:hover,
-    .contact-buttons a:focus {
-      filter: brightness(85%);
-      outline: none;
+    iframe {
+      border: 0;
+      width: 100%;
+      height: 400px;
+      margin-top: 20px;
     }
     footer {
       background: #004d40;
@@ -165,7 +182,6 @@
       text-align: center;
       padding: 15px 10px;
       margin-top: 50px;
-      font-size: 0.9rem;
     }
     @media(max-width: 768px) {
       .cards {
@@ -177,149 +193,160 @@
       }
       form {
         width: 90%;
+        padding: 20px;
+      }
+      #resumenReserva {
+        width: 90%;
       }
     }
-    /* Mensaje de confirmación */
-    #confirmation-message {
-      display: none;
-      margin-top: 15px;
-      padding: 15px;
-      border-radius: 5px;
-      background-color: #d4edda;
-      color: #155724;
-      font-weight: 600;
-      text-align: center;
-    }
   </style>
+
+
 </head>
 <body>
-  <header>
-    <h1>Turismo en las Islas Galápagos</h1>
-  </header>
+  <h2>Reserva tu viaje a las Islas Galápagos</h2>
 
-  <main>
-    <!-- Sección de lugares turísticos -->
-    <section aria-labelledby="lugares-turisticos">
-      <h2 id="lugares-turisticos">Lugares más turísticos</h2>
-      <div class="cards">
-        <article class="card" tabindex="0" aria-label="Tortuga Bay en Santa Cruz">
-          <img src="imagenes/tortuga.png" alt="Vista de Tortuga Bay con playa y tortugas marinas" />
-          <div class="card-content">
-            <h3>Tortuga Bay (Santa Cruz)</h3>
-            <p>Playa de arena blanca donde se pueden ver tortugas marinas y manglares.</p>
-          </div>
-        </article>
-        <article class="card" tabindex="0" aria-label="La Lobería en San Cristóbal">
-          <img src="imagenes/loberia.png" alt="Colonia de lobos marinos en La Lobería" />
-          <div class="card-content">
-            <h3>La Lobería (San Cristóbal)</h3>
-            <p>Área protegida famosa por sus colonias de lobos marinos.</p>
-          </div>
-        </article>
-        <article class="card" tabindex="0" aria-label="Los Túneles en Isabela">
-          <img src="imagenes/tuneles.png" alt="Formaciones volcánicas en Los Túneles para snorkel" />
-          <div class="card-content">
-            <h3>Los Túneles (Isabela)</h3>
-            <p>Formaciones volcánicas ideales para snorkel con fauna marina.</p>
-          </div>
-        </article>
-        <article class="card" tabindex="0" aria-label="Pinnacle Rock en Bartolomé">
-          <img src="imagenes/rock.png" alt="Pinnacle Rock con senderismo y vistas panorámicas" />
-          <div class="card-content">
-            <h3>Pinnacle Rock (Bartolomé)</h3>
-            <p>Icono del archipiélago con senderismo y vistas panorámicas.</p>
-          </div>
-        </article>
+      <!-- Sección de lugares turísticos -->
+   <section>
+  <h2>Lugares más turísticos</h2>
+  <div class="cards">
+    <article class="card" tabindex="0" aria-label="Tortuga Bay en Santa Cruz, playa de arena blanca con tortugas marinas y manglares">
+      <img src="imagenes/tortuga.png" alt="Tortuga Bay" />
+      <div class="card-content">
+        <h3>Tortuga Bay (Santa Cruz)</h3>
+        <p>Playa de arena blanca donde se pueden ver tortugas marinas y manglares.</p>
       </div>
-    </section>
-
-    <!-- Sección de reservas -->
-    <section aria-labelledby="reservas-populares">
-      <h2 id="reservas-populares">Reservaciones Populares</h2>
-      <ul>
-        <li><a href="https://www.booking.com" target="_blank" rel="noopener noreferrer">Finch Bay Galapagos Hotel (Santa Cruz)</a> – Hotel de lujo con playa privada.</li>
-        <li><a href="https://www.tripadvisor.com" target="_blank" rel="noopener noreferrer">Galápagos Safari Camp (San Cristóbal)</a> – Campamento de lujo en la naturaleza.</li>
-        <li><a href="https://www.booking.com" target="_blank" rel="noopener noreferrer">Hostal La Laguna (Isabela)</a> – Económico y acogedor.</li>
-        <li><a href="https://www.tripadvisor.com" target="_blank" rel="noopener noreferrer">Tour a Isla Bartolomé</a> – Snorkel y senderismo.</li>
-        <li><a href="https://www.booking.com" target="_blank" rel="noopener noreferrer">Cruceros por el Archipiélago</a> – Guiados por múltiples islas.</li>
-      </ul>
-    </section>
-
-    <!-- Formulario de contacto -->
-    <section aria-labelledby="reserva-viaje">
-      <h2 id="reserva-viaje">Reserva tu viaje</h2>
-      <form id="reservaForm" novalidate>
-        <label for="nombre">Nombre completo:</label>
-        <input type="text" id="nombre" name="nombre" required minlength="3" aria-required="true" aria-describedby="nombreHelp" />
-        <small id="nombreHelp" style="color:#777; font-size:0.85rem;">Mínimo 3 caracteres</small>
-
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="email" required aria-required="true" aria-describedby="emailHelp" />
-        <small id="emailHelp" style="color:#777; font-size:0.85rem;">Ejemplo: usuario@correo.com</small>
-
-        <label for="fecha">Fecha del viaje:</label>
-        <input type="date" id="fecha" name="fecha" required aria-required="true" min="" />
-
-        <label for="lugar">Lugar elegido:</label>
-        <select id="lugar" name="lugar" required aria-required="true">
-          <option value="" disabled selected>Selecciona un lugar</option>
-          <option value="Tortuga Bay">Tortuga Bay</option>
-          <option value="La Lobería">La Lobería</option>
-          <option value="Los Túneles">Los Túneles</option>
-          <option value="Pinnacle Rock">Pinnacle Rock</option>
-        </select>
-
-        <label for="comentarios">Comentarios adicionales:</label>
-        <textarea id="comentarios" name="comentarios" rows="4" placeholder="Escribe aquí tus comentarios..."></textarea>
-
-        <button type="submit">Enviar Reserva</button>
-
-        <div id="confirmation-message" role="alert" aria-live="assertive"></div>
-      </form>
-
-      <div class="contact-buttons" aria-label="Opciones de contacto">
-        <a href="https://wa.me/593999999999" target="_blank" rel="noopener noreferrer" aria-label="Contactar vía WhatsApp">📱 WhatsApp</a>
-        <a href="mailto:tuviaje@galapagos.com" class="email" aria-label="Enviar correo electrónico">✉ Correo</a>
+    </article>
+    <article class="card" tabindex="0" aria-label="La Lobería en San Cristóbal, área protegida con colonias de lobos marinos">
+      <img src="imagenes/loberia.png" alt="La Lobería" />
+      <div class="card-content">
+        <h3>La Lobería (San Cristóbal)</h3>
+        <p>Área protegida famosa por sus colonias de lobos marinos.</p>
       </div>
-    </section>
-  </main>
+    </article>
+    <article class="card" tabindex="0" aria-label="Los Túneles en Isabela, formaciones volcánicas para snorkel con fauna marina">
+      <img src="imagenes/tuneles.png" alt="Los Túneles" />
+      <div class="card-content">
+        <h3>Los Túneles (Isabela)</h3>
+        <p>Formaciones volcánicas ideales para snorkel con fauna marina.</p>
+      </div>
+    </article>
+    <article class="card" tabindex="0" aria-label="Pinnacle Rock en Bartolomé, icono con senderismo y vistas panorámicas">
+      <img src="imagenes/rock.png" alt="Pinnacle Rock" />
+      <div class="card-content">
+        <h3>Pinnacle Rock (Bartolomé)</h3>
+        <p>Icono del archipiélago con senderismo y vistas panorámicas.</p>
+      </div>
+    </article>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2025 Turismo Galápagos | Información actualizada y recomendaciones de viaje</p>
-  </footer>
+
+  <form id="reservaForm" novalidate aria-describedby="formInstructions">
+    <p id="formInstructions" style="font-size:0.9rem; color:#555;">Por favor completa todos los campos obligatorios (<abbr title="obligatorio"></abbr>).</p>
+
+    <label for="nombre">Nombre completo <abbr title="obligatorio">*</abbr>:</label>
+    <input type="text" id="nombre" name="nombre" minlength="3" required aria-required="true" aria-describedby="nombreHelp" />
+    <small id="nombreHelp" style="color:#777;">Ingrese los nombres que sean válidos.</small>
+
+    <label for="email">Correo electrónico <abbr title="obligatorio">*</abbr>:</label>
+    <input type="email" id="email" name="email" required aria-required="true" aria-describedby="emailHelp" />
+    <small id="emailHelp" style="color:#777;">Ejemplo: usuario@correo.com</small>
+
+    <label for="fecha">Fecha del viaje <abbr title="obligatorio">*</abbr>:</label>
+    <input type="date" id="fecha" name="fecha" required aria-required="true" min="" />
+
+    <label for="lugar">Lugar elegido <abbr title="obligatorio">*</abbr>:</label>
+    <select id="lugar" name="lugar" required aria-required="true">
+      <option value="" disabled selected>Selecciona un lugar</option>
+      <option value="Tortuga Bay">Tortuga Bay</option>
+      <option value="La Lobería">La Lobería</option>
+      <option value="Los Túneles">Los Túneles</option>
+      <option value="Pinnacle Rock">Pinnacle Rock</option>
+    </select>
+
+    <label for="comentarios">Comentarios adicionales:</label>
+    <textarea id="comentarios" name="comentarios" rows="4" placeholder="Escribe aquí tus comentarios..."></textarea>
+
+    <button type="submit" aria-label="Enviar reserva">Enviar Reserva</button>
+
+    <div id="error-message" role="alert" aria-live="assertive"></div>
+    <div id="confirmation-message" role="alert" aria-live="assertive"></div>
+  </form>
+
+  <div id="resumenReserva" aria-live="polite" style="display:none;"></div>
 
   <script>
-    // Configura la fecha mínima del input fecha para que sea hoy o después
-    const fechaInput = document.getElementById('fecha');
-    const hoy = new Date().toISOString().split('T')[0];
-    fechaInput.setAttribute('min', hoy);
+    // Ajustar la fecha mínima a hoy
+    document.addEventListener('DOMContentLoaded', () => {
+      const fechaInput = document.getElementById('fecha');
+      const today = new Date().toISOString().split('T')[0];
+      fechaInput.min = today;
+    });
 
-    // Formulario con validación y simulación de envío
     const form = document.getElementById('reservaForm');
-    const confirmationMessage = document.getElementById('confirmation-message');
+    const errorMsg = document.getElementById('error-message');
+    const confirmationMsg = document.getElementById('confirmation-message');
+    const resumenDiv = document.getElementById('resumenReserva');
 
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorMsg.style.display = 'none';
+      confirmationMsg.style.display = 'none';
+      resumenDiv.style.display = 'none';
 
-      // Validar campos básicos
+      // Validación sencilla
       if (!form.checkValidity()) {
-        form.reportValidity();
+        errorMsg.textContent = 'Por favor completa todos los campos obligatorios correctamente.';
+        errorMsg.style.display = 'block';
         return;
       }
 
-      // Aquí puedes agregar integración real con backend o email
-      // Por ahora simulamos envío exitoso y limpiamos formulario
-      confirmationMessage.textContent = '¡Reserva enviada con éxito! Nos pondremos en contacto contigo pronto.';
-      confirmationMessage.style.display = 'block';
+      // Datos del formulario
+      const nombre = form.nombre.value.trim();
+      const email = form.email.value.trim();
+      const fecha = form.fecha.value;
+      const lugar = form.lugar.value;
+      const comentarios = form.comentarios.value.trim();
 
+      if (nombre.length < 3) {
+        errorMsg.textContent = 'El nombre debe tener al menos 3 caracteres.';
+        errorMsg.style.display = 'block';
+        form.nombre.focus();
+        return;
+      }
+
+      // Validar email con regex simple
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        errorMsg.textContent = 'Ingrese un correo electrónico válido.';
+        errorMsg.style.display = 'block';
+        form.email.focus();
+        return;
+      }
+
+      // Mostrar resumen de reserva
+      resumenDiv.innerHTML = `
+        <h3>Resumen de tu reserva</h3>
+        <p><strong>Nombre:</strong> ${nombre}</p>
+        <p><strong>Correo:</strong> ${email}</p>
+        <p><strong>Fecha del viaje:</strong> ${fecha}</p>
+        <p><strong>Lugar elegido:</strong> ${lugar}</p>
+        <p><strong>Comentarios:</strong> ${comentarios ? comentarios : 'Ninguno'}</p>
+      `;
+      resumenDiv.style.display = 'block';
+
+      // Mensaje de confirmación
+      confirmationMsg.textContent = '¡Reserva enviada exitosamente! Nos pondremos en contacto contigo pronto.';
+      confirmationMsg.style.display = 'block';
+
+      // Limpiar el formulario (opcional)
       form.reset();
-      fechaInput.setAttribute('min', hoy); // reset mínimo fecha
-
-      // Opcional: ocultar mensaje tras unos segundos
-      setTimeout(() => {
-        confirmationMessage.style.display = 'none';
-      }, 7000);
+      // Restablecer la fecha mínima
+      const today = new Date().toISOString().split('T')[0];
+      form.fecha.min = today;
     });
   </script>
+
 </body>
 </html>
