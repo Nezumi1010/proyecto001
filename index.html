@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Turismo en las Islas Galápagos</title>
+  <meta name="description" content="Descubre los mejores lugares turísticos en las Islas Galápagos y reserva tu viaje con nosotros." />
   <style>
     * {
       margin: 0;
@@ -55,14 +56,17 @@
       overflow: hidden;
       transition: transform 0.3s ease;
     }
-    .card:hover {
+    .card:hover,
+    .card:focus-within {
       transform: translateY(-8px);
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      outline: none;
     }
     .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
+      display: block;
     }
     .card-content {
       padding: 15px;
@@ -78,15 +82,28 @@
     ul li {
       margin-bottom: 8px;
     }
+    ul li a {
+      color: #00796b;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    ul li a:hover,
+    ul li a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
     form {
       background: white;
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 0 auto;
     }
     form label {
       display: block;
       margin-top: 10px;
+      font-weight: 600;
     }
     form input, form select, form textarea {
       width: 100%;
@@ -94,37 +111,53 @@
       margin-top: 5px;
       border: 1px solid #ccc;
       border-radius: 4px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    form input:focus, form select:focus, form textarea:focus {
+      border-color: #00796b;
+      outline: none;
     }
     form button {
       margin-top: 15px;
-      padding: 10px 20px;
+      padding: 12px 25px;
       background: #00796b;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+    }
+    form button:hover,
+    form button:focus {
+      background: #004d40;
+      outline: none;
     }
     .contact-buttons {
       margin-top: 20px;
       display: flex;
-      gap: 10px;
+      justify-content: center;
+      gap: 15px;
     }
     .contact-buttons a {
       display: inline-block;
-      padding: 10px 15px;
+      padding: 12px 20px;
       background: #25d366;
       color: white;
       text-decoration: none;
       border-radius: 5px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
     }
     .contact-buttons a.email {
       background: #0072c6;
     }
-    iframe {
-      border: 0;
-      width: 100%;
-      height: 400px;
-      margin-top: 20px;
+    .contact-buttons a:hover,
+    .contact-buttons a:focus {
+      filter: brightness(85%);
+      outline: none;
     }
     footer {
       background: #004d40;
@@ -132,6 +165,7 @@
       text-align: center;
       padding: 15px 10px;
       margin-top: 50px;
+      font-size: 0.9rem;
     }
     @media(max-width: 768px) {
       .cards {
@@ -141,6 +175,20 @@
       .card {
         width: 90%;
       }
+      form {
+        width: 90%;
+      }
+    }
+    /* Mensaje de confirmación */
+    #confirmation-message {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #d4edda;
+      color: #155724;
+      font-weight: 600;
+      text-align: center;
     }
   </style>
 </head>
@@ -151,32 +199,32 @@
 
   <main>
     <!-- Sección de lugares turísticos -->
-    <section>
-      <h2>Lugares más turísticos</h2>
+    <section aria-labelledby="lugares-turisticos">
+      <h2 id="lugares-turisticos">Lugares más turísticos</h2>
       <div class="cards">
-        <article class="card">
-          <img src="imagenes/tortuga.png" alt="Tortuga Bay" />
+        <article class="card" tabindex="0" aria-label="Tortuga Bay en Santa Cruz">
+          <img src="imagenes/tortuga.png" alt="Vista de Tortuga Bay con playa y tortugas marinas" />
           <div class="card-content">
             <h3>Tortuga Bay (Santa Cruz)</h3>
             <p>Playa de arena blanca donde se pueden ver tortugas marinas y manglares.</p>
           </div>
         </article>
-        <article class="card">
-          <img src="imagenes/loberia.png" alt="La Lobería" />
+        <article class="card" tabindex="0" aria-label="La Lobería en San Cristóbal">
+          <img src="imagenes/loberia.png" alt="Colonia de lobos marinos en La Lobería" />
           <div class="card-content">
             <h3>La Lobería (San Cristóbal)</h3>
             <p>Área protegida famosa por sus colonias de lobos marinos.</p>
           </div>
         </article>
-        <article class="card">
-          <img src="imagenes/tuneles.png" alt="Los Túneles" />
+        <article class="card" tabindex="0" aria-label="Los Túneles en Isabela">
+          <img src="imagenes/tuneles.png" alt="Formaciones volcánicas en Los Túneles para snorkel" />
           <div class="card-content">
             <h3>Los Túneles (Isabela)</h3>
             <p>Formaciones volcánicas ideales para snorkel con fauna marina.</p>
           </div>
         </article>
-        <article class="card">
-          <img src="imagenes/rock.png" alt="Pinnacle Rock" />
+        <article class="card" tabindex="0" aria-label="Pinnacle Rock en Bartolomé">
+          <img src="imagenes/rock.png" alt="Pinnacle Rock con senderismo y vistas panorámicas" />
           <div class="card-content">
             <h3>Pinnacle Rock (Bartolomé)</h3>
             <p>Icono del archipiélago con senderismo y vistas panorámicas.</p>
@@ -186,62 +234,92 @@
     </section>
 
     <!-- Sección de reservas -->
-    <section>
-      <h2>Reservaciones Populares</h2>
+    <section aria-labelledby="reservas-populares">
+      <h2 id="reservas-populares">Reservaciones Populares</h2>
       <ul>
-        <li><strong><a href="https://www.booking.com" target="_blank">Finch Bay Galapagos Hotel (Santa Cruz)</a></strong> – Hotel de lujo con playa privada.</li>
-        <li><strong><a href="https://www.tripadvisor.com" target="_blank">Galápagos Safari Camp (San Cristóbal)</a></strong> – Campamento de lujo en la naturaleza.</li>
-        <li><strong><a href="https://www.booking.com" target="_blank">Hostal La Laguna (Isabela)</a></strong> – Económico y acogedor.</li>
-        <li><strong><a href="https://www.tripadvisor.com" target="_blank">Tour a Isla Bartolomé</a></strong> – Snorkel y senderismo.</li>
-        <li><strong><a href="https://www.booking.com" target="_blank">Cruceros por el Archipiélago</a></strong> – Guiados por múltiples islas.</li>
+        <li><a href="https://www.booking.com" target="_blank" rel="noopener noreferrer">Finch Bay Galapagos Hotel (Santa Cruz)</a> – Hotel de lujo con playa privada.</li>
+        <li><a href="https://www.tripadvisor.com" target="_blank" rel="noopener noreferrer">Galápagos Safari Camp (San Cristóbal)</a> – Campamento de lujo en la naturaleza.</li>
+        <li><a href="https://www.booking.com" target="_blank" rel="noopener noreferrer">Hostal La Laguna (Isabela)</a> – Económico y acogedor.</li>
+        <li><a href="https://www.tripadvisor.com" target="_blank" rel="noopener noreferrer">Tour a Isla Bartolomé</a> – Snorkel y senderismo.</li>
+        <li><a href="https://www.booking.com" target="_blank" rel="noopener noreferrer">Cruceros por el Archipiélago</a> – Guiados por múltiples islas.</li>
       </ul>
     </section>
 
     <!-- Formulario de contacto -->
-    <section>
-      <h2>Reserva tu viaje</h2>
-      <form action="mailto:tuviaje@galapagos.com" method="post" enctype="text/plain">
+    <section aria-labelledby="reserva-viaje">
+      <h2 id="reserva-viaje">Reserva tu viaje</h2>
+      <form id="reservaForm" novalidate>
         <label for="nombre">Nombre completo:</label>
-        <input type="text" id="nombre" name="Nombre" required>
+        <input type="text" id="nombre" name="nombre" required minlength="3" aria-required="true" aria-describedby="nombreHelp" />
+        <small id="nombreHelp" style="color:#777; font-size:0.85rem;">Mínimo 3 caracteres</small>
 
         <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="Correo" required>
+        <input type="email" id="email" name="email" required aria-required="true" aria-describedby="emailHelp" />
+        <small id="emailHelp" style="color:#777; font-size:0.85rem;">Ejemplo: usuario@correo.com</small>
 
         <label for="fecha">Fecha del viaje:</label>
-        <input type="date" id="fecha" name="Fecha del viaje" required>
+        <input type="date" id="fecha" name="fecha" required aria-required="true" min="" />
 
         <label for="lugar">Lugar elegido:</label>
-        <select id="lugar" name="Lugar">
-          <option>Tortuga Bay</option>
-          <option>La Lobería</option>
-          <option>Los Túneles</option>
-          <option>Pinnacle Rock</option>
+        <select id="lugar" name="lugar" required aria-required="true">
+          <option value="" disabled selected>Selecciona un lugar</option>
+          <option value="Tortuga Bay">Tortuga Bay</option>
+          <option value="La Lobería">La Lobería</option>
+          <option value="Los Túneles">Los Túneles</option>
+          <option value="Pinnacle Rock">Pinnacle Rock</option>
         </select>
 
-        <label for="mensaje">Comentarios adicionales:</label>
-        <textarea id="mensaje" name="Comentarios" rows="4"></textarea>
+        <label for="comentarios">Comentarios adicionales:</label>
+        <textarea id="comentarios" name="comentarios" rows="4" placeholder="Escribe aquí tus comentarios..."></textarea>
 
         <button type="submit">Enviar Reserva</button>
+
+        <div id="confirmation-message" role="alert" aria-live="assertive"></div>
       </form>
 
-      <div class="contact-buttons">
-        <a href="https://wa.me/593999999999" target="_blank">📱 WhatsApp</a>
-        <a href="mailto:tuviaje@galapagos.com" class="email">✉ Correo</a>
+      <div class="contact-buttons" aria-label="Opciones de contacto">
+        <a href="https://wa.me/593999999999" target="_blank" rel="noopener noreferrer" aria-label="Contactar vía WhatsApp">📱 WhatsApp</a>
+        <a href="mailto:tuviaje@galapagos.com" class="email" aria-label="Enviar correo electrónico">✉ Correo</a>
       </div>
-    </section>
-
-    <!-- Mapa de ubicación -->
-    <section>
-      <h2>Ubicación de las Islas Galápagos</h2>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6372442.142651699!2d-94.95068394867167!3d-0.9537698262083598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89a16d23e5d64b77%3A0x33e9c7b5cc61c60!2sIslas%20Gal%C3%A1pagos!5e0!3m2!1ses!2sec!4v1682443820632!5m2!1ses!2sec"
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
     </section>
   </main>
 
   <footer>
     <p>© 2025 Turismo Galápagos | Información actualizada y recomendaciones de viaje</p>
   </footer>
+
+  <script>
+    // Configura la fecha mínima del input fecha para que sea hoy o después
+    const fechaInput = document.getElementById('fecha');
+    const hoy = new Date().toISOString().split('T')[0];
+    fechaInput.setAttribute('min', hoy);
+
+    // Formulario con validación y simulación de envío
+    const form = document.getElementById('reservaForm');
+    const confirmationMessage = document.getElementById('confirmation-message');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Validar campos básicos
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      // Aquí puedes agregar integración real con backend o email
+      // Por ahora simulamos envío exitoso y limpiamos formulario
+      confirmationMessage.textContent = '¡Reserva enviada con éxito! Nos pondremos en contacto contigo pronto.';
+      confirmationMessage.style.display = 'block';
+
+      form.reset();
+      fechaInput.setAttribute('min', hoy); // reset mínimo fecha
+
+      // Opcional: ocultar mensaje tras unos segundos
+      setTimeout(() => {
+        confirmationMessage.style.display = 'none';
+      }, 7000);
+    });
+  </script>
 </body>
 </html>
