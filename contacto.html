@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contacto</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Turismo en las Islas Galápagos</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="lugares.html">Lugares</a></li>
+          <li><a href="reservas.html">Reservas</a></li>
+          <li><a href="contacto.html">Contactos</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Reserva tu viaje</h2>
+        <form
+          action="mailto:tuviaje@galapagos.com"
+          method="post"
+          enctype="text/plain"
+        >
+          <label for="nombre">Nombre completo:</label>
+          <input type="text" id="nombre" name="Nombre" required />
+
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" name="Correo" required />
+
+          <label for="fecha">Fecha del viaje:</label>
+          <input type="date" id="fecha" name="Fecha del viaje" required />
+
+          <label for="lugar">Lugar elegido:</label>
+          <select id="lugar" name="Lugar">
+            <option>Tortuga Bay</option>
+            <option>La Lobería</option>
+            <option>Los Túneles</option>
+            <option>Pinnacle Rock</option>
+          </select>
+
+          <label for="mensaje">Comentarios adicionales:</label>
+          <textarea id="mensaje" name="Comentarios" rows="4"></textarea>
+
+          <button type="submit">Enviar Reserva</button>
+        </form>
+
+        <div class="contact-buttons">
+          <a href="https://wa.me/593999999999" target="_blank">📱 WhatsApp</a>
+          <a href="mailto:tuviaje@galapagos.com" class="email">✉ Correo</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 Turismo Galápagos</p>
+    </footer>
+  </body>
+</html>
